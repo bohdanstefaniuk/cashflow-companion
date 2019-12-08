@@ -1,0 +1,55 @@
+<div class="mb-3 card outcomes">
+	<div class="card-body">
+		<h5 class="card-title">Ваши расходы</h5>
+		<h6 class="card-subtitle mb-2 text-muted">Здесь вы можете упралять своими расходами</h6>
+		<table class="table">
+			<tbody>
+				<tr>
+					<td>Квартирная плата</td>
+					<td><input type="text" [(ngModel)]="outcome.rent" disabled>$ <span class="edit"></span></td>
+				</tr>
+				<tr>
+					<td>Аренда жилья</td>
+					<td><input type="text" [(ngModel)]="outcome.houseRental">$ <span class="edit"></span></td>
+				</tr>
+				<tr>
+					<td>Кредит на квартиру</td>
+					<td><input type="text" [(ngModel)]="outcome.houseLoan">$ <span class="edit"></span></td>
+				</tr>
+				<tr>
+					<td>Кредит на машину</td>
+					<td><input type="text" [(ngModel)]="outcome.carLoan">$ <span class="edit"></span></td>
+				</tr>
+				<tr>
+					<td>Питания</td>
+					<td><input type="text" [(ngModel)]="outcome.food">$ <span class="edit"></span></td>
+				</tr>
+				<tr>
+					<td>Обучение</td>
+					<td><input type="text" [(ngModel)]="outcome.education">$ <span class="edit"></span></td>
+				</tr>
+				<tr>
+					<td>Тренинги</td>
+					<td><input type="text" [(ngModel)]="outcome.trainings">$ <span class="edit"></span></td>
+				</tr>
+				<tr>
+					<td>Одежда</td>
+					<td><input type="text" [(ngModel)]="outcome.clothes">$ <span class="edit"></span></td>
+				</tr>
+				<tr>
+					<td>Проезд/Бензин</td>
+					<td><input type="text" [(ngModel)]="outcome.transport">$ <span class="edit"></span></td>
+				</tr>
+				<tr>
+					<td>Телефон</td>
+					<td><input type="text" [(ngModel)]="outcome.phone">$ <span class="edit"></span></td>
+				</tr>
+				<tr *ngIf="outcome.childCount > 0">
+					<td>Дети</td>
+					<td><input type="text" [(ngModel)]="outcome.outcomePerChild">$ x {{ outcome.childCount }} <span class="edit"></span></td>
+				</tr>
+			</tbody>
+		</table>
+		<p class="actions">Добавить: <a href="#">ребенка</a>или <a href="#">опекунство</a></p>
+	</div>
+</div>

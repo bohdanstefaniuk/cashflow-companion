@@ -1,0 +1,42 @@
+<div class="mb-3 card incomes">
+	<div class="card-body">
+		<h5 class="card-title">Ваши доходы</h5>
+		<h6 class="card-subtitle mb-2 text-muted">Здесь вы можете упралять своими доходами <span class="edit"
+				(click)="toggleEditMode()"></span></h6>
+		<table class="table">
+			<tbody>
+				<tr>
+					<td>Зарплата</td>
+					<td>
+						<input type="number" [disabled]="!isEditMode" [(ngModel)]="income.salary"
+							[ngClass]="{activeInput:isEditMode}">$
+					</td>
+				</tr>
+				<tr *ngFor="let realEstate of income.realEstates">
+					<td>Доход от недвижимости</td>
+					<td><input type="number" [disabled]="!isEditMode" [(ngModel)]="realEstate.cashflow"
+							[ngClass]="{activeInput:isEditMode}">$</td>
+				</tr>
+				<tr *ngFor="let smallBusiness of income.smallBusinesses">
+					<td>Доход от малого бизнеса</td>
+					<td><input type="number" [disabled]="!isEditMode" [(ngModel)]="smallBusiness.cashflow"
+							[ngClass]="{activeInput:isEditMode}">$</td>
+				</tr>
+				<tr *ngFor="let bigBusiness of income.bigBusinesses">
+					<td>Доход от большого бизнеса</td>
+					<td><input type="number" [disabled]="!isEditMode" [(ngModel)]="bigBusiness.cashflow"
+							[ngClass]="{activeInput:isEditMode}">$</td>
+				</tr>
+			</tbody>
+		</table>
+		<p class="actions" *ngIf="!isEditMode">Добавить
+			<a [routerLink]="" role="button" (click)="addSmallBusiness()">малый</a>,
+			<a [routerLink]="" role="button" (click)="addBigBusiness()">большой</a>
+			бизнесс или
+			<a [routerLink]="" role="button" (click)="addRealEstate()">недвижимости</a></p>
+		<p class="actions" *ngIf="isEditMode">
+			<a [routerLink]="" role="button" (click)="save()">Сохранить</a> или
+			<a [routerLink]="" role="button" (click)="cancel()">отменить</a>
+		</p>
+	</div>
+</div>

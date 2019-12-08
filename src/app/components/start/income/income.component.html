@@ -1,0 +1,21 @@
+<div class="container">
+	<ul class="nav justify-content-center">
+		<li class="nav-item">
+			<a class="nav-link active" href="#">В самое начало</a>
+		</li>
+		<li class="nav-item">
+			<a class="nav-link" href="#">Назад на игровое поле</a>
+		</li>
+	</ul>
+	<section class="w-100 d-flex justify-content-center">
+		<form class="w-50" [formGroup]="inputForm" (ngSubmit)="onSubmit()">
+			<h4>Заполни доходы</h4>
+			<div class="form-group">
+				<label for="salaryInput">Зарплата</label>
+				<input type="number" class="form-control" id="salaryInput" name="salary" placeholder="Введи зарплату" formControlName="salary">
+			</div>
+			<button type="button" class="btn btn-default" (click)="onReturn()">Назад</button>
+			<button type="submit" class="btn btn-primary" [disabled]="inputForm.invalid">Дальше</button>
+		</form>
+	</section>
+</div>
