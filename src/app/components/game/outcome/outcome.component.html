@@ -1,55 +1,68 @@
 <div class="mb-3 card outcomes">
 	<div class="card-body">
 		<h5 class="card-title">Ваши расходы</h5>
-		<h6 class="card-subtitle mb-2 text-muted">Здесь вы можете упралять своими расходами</h6>
+		<h6 class="card-subtitle mb-2 text-muted">Здесь вы можете упралять своими расходами<span class="edit"
+				(click)="toggleEditMode()"></span></h6>
 		<table class="table">
 			<tbody>
 				<tr>
 					<td>Квартирная плата</td>
-					<td><input type="text" [(ngModel)]="outcome.rent" disabled>$ <span class="edit"></span></td>
+					<td><input type="text" [(ngModel)]="outcome.rent" disabled [disabled]="!isEditMode" [ngClass]="{activeInput:isEditMode}">$</td>
 				</tr>
 				<tr>
 					<td>Аренда жилья</td>
-					<td><input type="text" [(ngModel)]="outcome.houseRental">$ <span class="edit"></span></td>
+					<td><input type="text" [(ngModel)]="outcome.houseRental" [disabled]="!isEditMode" [ngClass]="{activeInput:isEditMode}">$</td>
 				</tr>
 				<tr>
 					<td>Кредит на квартиру</td>
-					<td><input type="text" [(ngModel)]="outcome.houseLoan">$ <span class="edit"></span></td>
+					<td><input type="text" [(ngModel)]="outcome.houseLoan" [disabled]="!isEditMode" [ngClass]="{activeInput:isEditMode}">$</td>
 				</tr>
 				<tr>
 					<td>Кредит на машину</td>
-					<td><input type="text" [(ngModel)]="outcome.carLoan">$ <span class="edit"></span></td>
+					<td><input type="text" [(ngModel)]="outcome.carLoan" [disabled]="!isEditMode" [ngClass]="{activeInput:isEditMode}">$</td>
 				</tr>
 				<tr>
 					<td>Питания</td>
-					<td><input type="text" [(ngModel)]="outcome.food">$ <span class="edit"></span></td>
+					<td><input type="text" [(ngModel)]="outcome.food" [disabled]="!isEditMode" [ngClass]="{activeInput:isEditMode}">$</td>
 				</tr>
 				<tr>
 					<td>Обучение</td>
-					<td><input type="text" [(ngModel)]="outcome.education">$ <span class="edit"></span></td>
+					<td><input type="text" [(ngModel)]="outcome.education" [disabled]="!isEditMode" [ngClass]="{activeInput:isEditMode}">$</td>
 				</tr>
 				<tr>
 					<td>Тренинги</td>
-					<td><input type="text" [(ngModel)]="outcome.trainings">$ <span class="edit"></span></td>
+					<td><input type="text" [(ngModel)]="outcome.trainings" [disabled]="!isEditMode" [ngClass]="{activeInput:isEditMode}">$</td>
 				</tr>
 				<tr>
 					<td>Одежда</td>
-					<td><input type="text" [(ngModel)]="outcome.clothes">$ <span class="edit"></span></td>
+					<td><input type="text" [(ngModel)]="outcome.clothes" [disabled]="!isEditMode" [ngClass]="{activeInput:isEditMode}">$</td>
 				</tr>
 				<tr>
 					<td>Проезд/Бензин</td>
-					<td><input type="text" [(ngModel)]="outcome.transport">$ <span class="edit"></span></td>
+					<td><input type="text" [(ngModel)]="outcome.transport" [disabled]="!isEditMode" [ngClass]="{activeInput:isEditMode}">$</td>
 				</tr>
 				<tr>
 					<td>Телефон</td>
-					<td><input type="text" [(ngModel)]="outcome.phone">$ <span class="edit"></span></td>
+					<td><input type="text" [(ngModel)]="outcome.phone" [disabled]="!isEditMode" [ngClass]="{activeInput:isEditMode}">$</td>
 				</tr>
 				<tr *ngIf="outcome.childCount > 0">
 					<td>Дети</td>
-					<td><input type="text" [(ngModel)]="outcome.outcomePerChild">$ x {{ outcome.childCount }} <span class="edit"></span></td>
+					<td><input type="text" [(ngModel)]="outcome.outcomePerChild" [disabled]="!isEditMode" [ngClass]="{activeInput:isEditMode}">$ x {{ outcome.childCount }}</td>
+				</tr>
+				<tr>
+					<td>Опекунство</td>
+					<td><input type="text" [(ngModel)]="outcome.guardianship" [disabled]="!isEditMode" [ngClass]="{activeInput:isEditMode}">$</td>
 				</tr>
 			</tbody>
 		</table>
-		<p class="actions">Добавить: <a href="#">ребенка</a>или <a href="#">опекунство</a></p>
+		<p class="actions" *ngIf="!isEditMode">
+			<a [routerLink]="" (click)="addChild()">Добавить ребенка</a>
+			<span class="mr-1" [ngClass]="{hidden:outcome.childCount==0}">,</span>
+			<a [routerLink]="" (click)="removeChild()" [ngClass]="{hidden:outcome.childCount==0}">убрать ребенка</a>
+		</p>
+		<p class="actions" *ngIf="isEditMode">
+			<a [routerLink]="" role="button" (click)="save()">Сохранить</a> или
+			<a [routerLink]="" role="button" (click)="cancel()">отменить</a>
+		</p>
 	</div>
 </div>

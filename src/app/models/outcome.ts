@@ -11,4 +11,5 @@ export class Outcome {
 	phone: number = 0;
 	childCount: number = 0;
 	outcomePerChild: number = 0;
+	guardianship: number = 0;
 }

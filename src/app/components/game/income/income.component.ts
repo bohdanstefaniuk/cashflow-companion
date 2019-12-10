@@ -2,7 +2,6 @@ import { Component, OnInit } from '@angular/core';
 import { Repository } from 'src/app/services/repository';
 import { Income } from 'src/app/models/income';
 import { Business } from 'src/app/models/business';
-import { ObjectUtilities } from 'src/app/services/objectUtilities';
 
 @Component({
   selector: 'app-income',

@@ -1,9 +1,13 @@
 import { Repository } from './repository';
 
-export class Game {
+export class GameService {
 	constructor(private repository: Repository) {}
 
 	nextPay() {
+		
+	}
+
+	moveToRichWorld() {
 		
 	}
 }

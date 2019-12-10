@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { Calculator } from 'src/app/services/calculator';
+import { SummaryCalculator } from 'src/app/services/summaryCalculator';
 import { Repository } from 'src/app/services/repository';
 import { Summary } from 'src/app/models/total';
 
@@ -11,7 +11,7 @@ import { Summary } from 'src/app/models/total';
 export class TotalComponent implements OnInit {
   summary: Summary;
 
-  constructor(public calculator: Calculator,
+  constructor(public calculator: SummaryCalculator,
     private repo: Repository) {
   }
 

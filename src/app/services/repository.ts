@@ -1,20 +1,15 @@
 import { Income } from '../models/income';
 import { Outcome } from '../models/outcome';
 import { Business } from '../models/business';
-import { BusinessType } from '../models/businessType';
-import { Observable, BehaviorSubject, Observer } from 'rxjs';
 import { User } from '../models/user';
 import { Injectable } from '@angular/core';
 import { EventEmitter } from '@angular/core';
-import { ObjectUtilities } from './objectUtilities';
-import { IRepository } from './IRepository';
-import { filter } from 'minimatch';
-import { element } from 'protractor';
+import { ObjectUtilities } from '../common/objectUtilities';
 
 @Injectable({
 	providedIn: 'root',
 })
-export class Repository implements IRepository {
+export class Repository {
 	private _outcome: Outcome;
 	private _income: Income;
 	private _user: User;

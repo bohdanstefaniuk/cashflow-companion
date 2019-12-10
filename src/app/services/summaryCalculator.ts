@@ -6,7 +6,7 @@ import { Injectable } from '@angular/core';
 @Injectable({
 	providedIn: 'root',
 })
-export class Calculator {
+export class SummaryCalculator {
 	constructor(private repository: Repository) { }
 
 	public getSummary(): Summary {

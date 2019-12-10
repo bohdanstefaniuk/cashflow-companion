@@ -3,7 +3,6 @@ import { Outcome } from 'src/app/models/outcome';
 import { Repository } from 'src/app/services/repository';
 import { FormGroup, FormControl } from '@angular/forms';
 import { Router } from '@angular/router';
-import { Calculator } from 'src/app/services/calculator';
 
 @Component({
   selector: 'app-outcome-input',
