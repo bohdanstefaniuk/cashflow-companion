@@ -1,0 +1,29 @@
+.container {
+	max-width: max-content;
+}
+
+.pulse {
+	box-shadow: 0 0 0 0 rgba(0, 0, 0, 1);
+	width: 500px;
+    display: block;
+}
+
+.pulseBlue {
+	box-shadow: 0 0 0 0 rgba(52, 172, 224, 1);
+	animation: pulseBlue 2s infinite;
+	transform: scale(1);
+}
+
+@keyframes pulseBlue {
+	0% {
+		box-shadow: 0 0 0 0 rgba(52, 172, 224, 0.7);
+	}
+	
+	70% {
+		box-shadow: 0 0 0 15px rgba(52, 172, 224, 0);
+	}
+	
+	100% {
+		box-shadow: 0 0 0 0 rgba(52, 172, 224, 0);
+	}
+}

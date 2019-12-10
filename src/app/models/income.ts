@@ -1,7 +1,7 @@
 import { Business } from './business';
 
 export class Income {
-	salary: number;
+	salary: number = 0;
 	smallBusinesses: Array<Business>;
 	bigBusinesses: Array<Business>;
 	realEstates: Array<Business>;

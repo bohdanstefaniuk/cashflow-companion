@@ -5,6 +5,7 @@ import { User } from '../models/user';
 import { Injectable } from '@angular/core';
 import { EventEmitter } from '@angular/core';
 import { ObjectUtilities } from '../common/objectUtilities';
+import { Stock } from '../models/stock';
 
 @Injectable({
 	providedIn: 'root',
@@ -13,15 +14,19 @@ export class Repository {
 	private _outcome: Outcome;
 	private _income: Income;
 	private _user: User;
+	private _stocks: Array<Stock>;
+	private _isInitialized: boolean;
 	onDataChanged:EventEmitter<any> = new EventEmitter<any>();
 
 	constructor() {
-		this.clearAll();
-		this._income.salary = 1000;
-		this._outcome.childCount = 2;
-		this._outcome.outcomePerChild = 150;
-		this._outcome.rent = 570;
-		this._income.smallBusinesses.push(new Business(450));
+		this.init();
+		// this._user.name = "Богдан";
+		// this._user.dream = "Купить большую яхту";
+		// this._income.salary = 1000;
+		// this._outcome.childCount = 2;
+		// this._outcome.outcomePerChild = 150;
+		// this._outcome.rent = 570;
+		// this._income.smallBusinesses.push(new Business(450));
 	}
 
 //#region Properties
@@ -54,23 +59,32 @@ export class Repository {
 		this.emitDataChangedEvent();
 	}
 
-//#endregion
+	public get stocks() : Array<Stock> {
+		return ObjectUtilities.copy(this._stocks);
+	}
 
-//#region Methods: Public
+	public set stocks(value: Array<Stock>) {
+		this._stocks = ObjectUtilities.copy(value);
+	}
 
-	clearAll() {
-		this.income = new Income();
-		this.outcome = new Outcome();
-		this.user = new User();
-		this.emitDataChangedEvent();
+	public get isInitialized(): boolean {
+		return this._isInitialized;
 	}
 
 //#endregion
 
 //#region Methods: Private
 
+	public init() {
+		this.restoreFromLocalStorage();
+		this._isInitialized = false;
+		this.onDataChanged.emit(null);
+	}
+
 	private emitDataChangedEvent() {
 		this.onDataChanged.emit(null);
+		this._isInitialized = true;
+		this.saveToLocalStorage();
 	}
 
 	private cleanZeroBusinesses() {
@@ -78,6 +92,39 @@ export class Repository {
 		this._income.bigBusinesses = this._income.bigBusinesses.filter(filter);
 		this._income.realEstates = this._income.realEstates.filter(filter);
 		this._income.smallBusinesses = this._income.smallBusinesses.filter(filter);
+	}
+
+	private saveToLocalStorage() {
+		localStorage.setItem("income", JSON.stringify(this._income));
+		localStorage.setItem("outcome", JSON.stringify(this._outcome));
+		localStorage.setItem("user", JSON.stringify(this._user));
+		localStorage.setItem("stocks", JSON.stringify(this._stocks));
+	}
+
+	private restoreFromLocalStorage() {
+		this._income = this.restoreItem("income") || new Income();
+		this._outcome = this.restoreItem("outcome") || new Outcome();
+		this._user = this.restoreItem("user") || new User();
+		this._stocks = this.restoreItem("stocks") || this.getDefaultStocks();
+	}
+
+	private restoreItem(name: string): any {
+		let item = localStorage.getItem(name);
+		if (item) {
+			this._isInitialized = true;
+			return JSON.parse(item);
+		} 
+		return null
+	}
+	
+	private getDefaultStocks(): Array<Stock> {
+		let stocks = new Array<Stock>();
+		stocks.push(new Stock("УКТ"));
+		stocks.push(new Stock("КРС"));
+		stocks.push(new Stock("КЧГ"));
+		stocks.push(new Stock("ЯКХЗ"));
+		stocks.push(new Stock("ДР"));
+		return stocks;
 	}
 
 //#endregion

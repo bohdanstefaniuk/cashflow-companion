@@ -1,5 +1,5 @@
 import { Repository } from './repository'
-import { Summary } from '../models/total'
+import { Summary } from '../models/summary'
 import { Business } from '../models/business';
 import { Injectable } from '@angular/core';
 
@@ -43,7 +43,7 @@ export class SummaryCalculator {
 			if (key == "childCount" || key == "outcomePerChild") {
 				continue;
 			}
-			total += outcomes[key];
+			total += Number(outcomes[key]);
 		}
 		return total;
 	}

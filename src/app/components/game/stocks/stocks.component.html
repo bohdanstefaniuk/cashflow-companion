@@ -1,0 +1,26 @@
+<div class="mb-3 card stocks">
+	<div class="card-body">
+		<h5 class="card-title">Ваши акции</h5>
+		<h6 class="card-subtitle mb-2 text-muted">Управляйте своими акциями<span class="edit"
+				(click)="toggleEditMode()"></span></h6>
+		<table class="table">
+			<tbody>
+				<tr *ngFor="let stock of stocks">
+					<td>{{ stock.name }}</td>
+					<td class="inputContainer">
+						<input type="number" [disabled]="!isEditMode" [(ngModel)]="stock.purchasePricePerStock"
+							[ngClass]="{activeInput:isEditMode}" class="tableInput" />
+						<span>$ x </span>
+						<input type="number" [disabled]="!isEditMode" [(ngModel)]="stock.count"
+							[ngClass]="{activeInput:isEditMode, activeCountInput:isEditMode}" class="tableInput countInput"/>
+					</td>
+				</tr>
+			</tbody>
+		</table>
+		<p class="actions" *ngIf="!isEditMode">Сумма акций на момент покупки: {{ stocksSumByPaymentDate }}$</p>
+		<p class="actions" *ngIf="isEditMode">
+			<a [routerLink]="" role="button" (click)="save()">Сохранить</a> или
+			<a [routerLink]="" role="button" (click)="cancel()">отменить</a>
+		</p>
+	</div>
+</div>

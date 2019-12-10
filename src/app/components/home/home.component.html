@@ -12,12 +12,12 @@
 				<a routerLink="/user" class="btn btn-block btn-outline-primary mt-auto">Старт</a>
 			</div>
 		</div>
-		<div class="card fit-content" style="width: 18rem;">
+		<div class="card fit-content" style="width: 18rem;" *ngIf="isInitialized">
 			<div class="card-body">
 				<h5 class="card-title">Продолжить игру</h5>
 				<h6 class="card-subtitle mb-2 text-muted">У вам есть незаконченая игра.</h6>
 				<p class="card-text">Вы можете продожнить или начать новую</p>
-				<button type="button" class="btn btn-block btn-outline-primary mt-auto">Продолжить</button>
+				<a routerLink="/game" class="btn btn-block btn-outline-primary mt-auto">Продолжить</a>
 			</div>
 		</div>
 	</div>

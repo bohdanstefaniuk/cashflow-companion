@@ -9,7 +9,7 @@
 					<td>Зарплата</td>
 					<td>
 						<input type="number" [disabled]="!isEditMode" [(ngModel)]="income.salary"
-							[ngClass]="{activeInput:isEditMode}">$
+							[ngClass]="{activeInput:isEditMode}" pattern="[0-9]*">$
 					</td>
 				</tr>
 				<tr *ngFor="let realEstate of income.realEstates">

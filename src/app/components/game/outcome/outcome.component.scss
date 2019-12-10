@@ -4,6 +4,10 @@
 	border: 1px solid #d0d0d0;
 }
 
+.card {
+	margin: 0px;
+}
+
 tr td:last-child input {
 	text-align: right;
 	background-color: transparent;
@@ -17,7 +21,6 @@ tr td:last-child input {
     background-clip: border-box !important;
     border: 1px solid rgba(0,0,0,.125) !important;
 	border-radius: .25rem !important;
-	text-align: left !important;
 }
 
 tr td:last-child {

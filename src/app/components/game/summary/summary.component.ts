@@ -1,14 +1,14 @@
 import { Component, OnInit } from '@angular/core';
 import { SummaryCalculator } from 'src/app/services/summaryCalculator';
 import { Repository } from 'src/app/services/repository';
-import { Summary } from 'src/app/models/total';
+import { Summary } from 'src/app/models/summary';
 
 @Component({
-  selector: 'app-total',
-  templateUrl: './total.component.html',
-  styleUrls: ['./total.component.scss']
+  selector: 'app-summary',
+  templateUrl: './summary.component.html',
+  styleUrls: ['./summary.component.scss']
 })
-export class TotalComponent implements OnInit {
+export class SummaryComponent implements OnInit {
   summary: Summary;
 
   constructor(public calculator: SummaryCalculator,

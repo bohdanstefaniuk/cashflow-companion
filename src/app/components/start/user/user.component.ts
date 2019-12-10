@@ -20,7 +20,7 @@ export class UserComponent implements OnInit {
   onSubmit() {
     var formValue = this.inputForm.value;
     this.repo.user = formValue;
-    this.router.navigate(["/income"]);
+    this.router.navigate(["/game"]);
   }
 
   onReturn() {
