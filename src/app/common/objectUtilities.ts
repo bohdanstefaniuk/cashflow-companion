@@ -1,5 +1,5 @@
 export class ObjectUtilities {
-	static isObject(obj) {
+	static isObject(obj): boolean {
 		var type = typeof obj;
 		return type === 'function' || type === 'object' && !!obj;
 	};

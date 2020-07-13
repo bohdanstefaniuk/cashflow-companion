@@ -9,7 +9,7 @@ import { GameComponent } from './components/game/game.component';
 import { SummaryComponent } from './components/game/summary/summary.component';
 import { LoansComponent } from './components/game/loans/loans.component';
 import { Repository } from './services/repository';
-import { SummaryCalculator } from './services/summaryCalculator';
+import { SummaryCalculator } from './services/summary-calculator';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { IncomeComponent } from './components/game/income/income.component';
 import { OutcomeComponent } from './components/game/outcome/outcome.component';

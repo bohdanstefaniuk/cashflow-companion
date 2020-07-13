@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { SummaryCalculator } from 'src/app/services/summaryCalculator';
+import { SummaryCalculator } from 'src/app/services/summary-calculator';
 import { Repository } from 'src/app/services/repository';
 import { Summary } from 'src/app/models/summary';
 

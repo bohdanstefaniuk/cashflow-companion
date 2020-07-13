@@ -15,6 +15,9 @@ export class GameComponent implements OnInit {
 
   ngOnInit() {
     this.user = this.repo.user;
+    if (this.repo.isInitialized) {
+      this.hideGuide();
+    }
   }
 
   hideGuide() {

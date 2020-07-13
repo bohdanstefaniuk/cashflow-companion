@@ -16,17 +16,24 @@ export class Repository {
 	private _user: User;
 	private _stocks: Array<Stock>;
 	private _isInitialized: boolean;
+
 	onDataChanged:EventEmitter<any> = new EventEmitter<any>();
 
 	constructor() {
 		this.init();
-		// this._user.name = "Богдан";
-		// this._user.dream = "Купить большую яхту";
-		// this._income.salary = 1000;
-		// this._outcome.childCount = 2;
-		// this._outcome.outcomePerChild = 150;
-		// this._outcome.rent = 570;
-		// this._income.smallBusinesses.push(new Business(450));
+	}
+
+	public init() {
+		this.restoreFromLocalStorage();
+		this._isInitialized = false;
+		this.onDataChanged.emit(null);
+	}
+
+	public clear() {
+		this.clearLocalStorage();
+		this.restoreFromLocalStorage();
+		this._isInitialized = false;
+		this.onDataChanged.emit(null);
 	}
 
 //#region Properties
@@ -75,12 +82,6 @@ export class Repository {
 
 //#region Methods: Private
 
-	public init() {
-		this.restoreFromLocalStorage();
-		this._isInitialized = false;
-		this.onDataChanged.emit(null);
-	}
-
 	private emitDataChangedEvent() {
 		this.onDataChanged.emit(null);
 		this._isInitialized = true;
@@ -106,6 +107,10 @@ export class Repository {
 		this._outcome = this.restoreItem("outcome") || new Outcome();
 		this._user = this.restoreItem("user") || new User();
 		this._stocks = this.restoreItem("stocks") || this.getDefaultStocks();
+	}
+
+	private clearLocalStorage() {
+		localStorage.clear();
 	}
 
 	private restoreItem(name: string): any {
